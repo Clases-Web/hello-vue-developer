@@ -1,41 +1,33 @@
-import * as DeveloperId from "vite";
+import {PersonName} from "../../../shared/domain/model/person-name.value-object.js";
+import {DeveloperId} from "./developer-id.value-object.js";
 
 export class Developer {
     _id;
     _name;
 
-    constructor(firstname, lastname) {
-        const provideName= new PersonName(firstname, lastname);
-        this.id = provideName.isValid() ? DeveloperId.build() : null;
-        this.name = provideName;
-        this._firstName = firstname;
-        this._lastName = lastname;
+    constructor(firstName, lastName) {
+        const providedName = new PersonName(firstName, lastName);
+        this._id = providedName.isValid() ? DeveloperId.build() : null;
+        this._name = providedName;
     }
 
-
-    get firstName() {
-        return this._firstName;
+    get name() {
+        return this._name;
     }
 
-    get lastName() {
-        return this._lastName;
-    }
     get fullName() {
-        return [this._firstName, this._lastName].filter(name => name.length > 0).join(" ");
+        return this._name ? this._name.fullName : "Unknown";
     }
 
-    equals(other) {
-        return other instanceof PersonName &&
-            this._firstName === other.firstName &&
-            this._lastName === other.lastName;
+    isRegisterable() {
+        return this._name ? this._name.isValid() : false;
     }
 
-    isValid() {
-        return this.isFullyNamed();
+    get id() {
+        return this._id;
     }
 
-    isFullyNamed() {
-        return this._firstName.length > 0 && this._lastName.length > 0;
+    isIdentified() {
+        return this._id !== null;
     }
-
 }
