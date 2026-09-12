@@ -1,5 +1,6 @@
 <script setup>
 import {ref} from 'vue';
+import {Developer} from "../../domain/model/developer.entity.js";
 
 const firstName = ref("");
 const lastName = ref("");
@@ -26,6 +27,7 @@ function submitRegistrationRequest() {
 </script>
 
 <template>
+  <!-- Developer Registration Form -->
   <div>
     <h2>New Developer</h2>
     <div>
