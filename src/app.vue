@@ -1,6 +1,7 @@
 <script setup>
 import DeveloperRegistration from "./greetings/presentation/components/developer-registration.vue";
 import {ref} from "vue";
+import DeveloperGreeting from "./greetings/presentation/components/developer-greeting.vue";
 
 const registeredDeveloper = ref(null);
 const hasRegistered = ref(false);
