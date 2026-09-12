@@ -1,27 +1,28 @@
 import {generateUUID, isValidUUID} from "../../../shared/domain/uuid.js";
 
-export class DeveloperID{
+export class DeveloperId {
     _value;
+
     constructor(value) {
-        if (!isValidUUID(value)){
-            throw new Error(`Invalid UUID ID: ${value}`);
+        if (!isValidUUID(value)) {
+            throw new Error(`Invalid UUID: ${value}`);
         }
         this._value = value;
     }
-
 
     get value() {
         return this._value;
     }
 
-    static build(){
-        return new DeveloperID(generateUUID());
+    static build() {
+        return new DeveloperId(generateUUID());
     }
 
-    equals(other){
-        return other instanceof DeveloperID && this._value === other_value;
+    equals(other) {
+        return other instanceof DeveloperId && this._value === other.value;
     }
-    toString(){
+
+    toString() {
         return this._value;
     }
 }
